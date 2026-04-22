@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swaraj Deshmukh — Operations & SCM Consultant</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy2: #0f2040;
+    --teal: #0d7377;
+    --teal2: #14a0a5;
+    --gold: #e8a838;
+    --gold2: #f5c842;
+    --cream: #f8f4ee;
+    --white: #ffffff;
+    --gray: #64748b;
+    --lgray: #cbd5e1;
+    --text: #1e293b;
+    --card: #ffffff;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97);
+    backdrop-filter: blur(10px);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+    border-bottom: 1px solid rgba(14,115,119,0.3);
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    padding: 80px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(13,115,119,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 10% 80%, rgba(232,168,56,0.08) 0%, transparent 60%);
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 4rem; align-items: center;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--teal2);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px solid rgba(20,160,165,0.4);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero h1 em {
+    color: var(--gold);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 480px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    padding: 11px 26px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal2); transform: translateY(-1px); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.8);
+    padding: 11px 26px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Hero stats */
+  .hero-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 1.2rem 1.4rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .stat-card:hover {
+    border-color: rgba(13,115,119,0.5);
+    background: rgba(13,115,119,0.08);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.4;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 5%; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+  }
+  .section-sub {
+    font-size: 0.95rem;
+    color: var(--gray);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.4fr;
+    gap: 4rem; align-items: start;
+  }
+  .about-left {}
+  .about-photo-box {
+    width: 100%;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 4rem;
+    color: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+  }
+  .about-photo-box::after {
+    content: 'SD';
+    position: absolute;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.12);
+    font-family: 'DM Serif Display', serif;
+  }
+  .about-contact-list { list-style: none; }
+  .about-contact-list li {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.82rem;
+    color: var(--gray);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--lgray);
+  }
+  .about-contact-list li:last-child { border: none; }
+  .contact-icon { color: var(--teal); font-size: 0.9rem; }
+  .about-right p {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .about-right p strong { color: var(--navy); }
+  .skills-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.8rem; margin-top: 1.5rem;
+  }
+  .skill-pill {
+    background: var(--cream);
+    border: 1px solid var(--lgray);
+    border-radius: 4px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+    color: var(--text);
+    font-weight: 500;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .skill-pill::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+    flex-shrink: 0;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--cream); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), var(--navy));
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--lgray);
+  }
+  .timeline-item:last-child { border: none; margin-bottom: 0; }
+  .timeline-dot {
+    position: absolute; left: -2.4rem; top: 6px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid var(--cream);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+  .timeline-meta {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+  .timeline-company {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--navy);
+  }
+  .timeline-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--teal);
+    background: rgba(13,115,119,0.1);
+    padding: 3px 9px;
+    border-radius: 2px;
+    letter-spacing: 0.05em;
+  }
+  .timeline-role {
+    font-size: 0.88rem;
+    color: var(--gray);
+    font-weight: 500;
+    margin-bottom: 0.9rem;
+  }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    font-size: 0.88rem;
+    color: var(--text);
+    line-height: 1.65;
+    padding: 4px 0 4px 1.2rem;
+    position: relative;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--teal);
+    font-size: 0.8rem;
+  }
+  .timeline-bullets li strong { color: var(--navy); }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--navy); }
+  #projects .section-title { color: var(--white); }
+  #projects .section-sub { color: rgba(255,255,255,0.5); }
+  #projects .section-tag { color: var(--teal2); }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1.6rem;
+    transition: border-color 0.25s, background 0.25s, transform 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--gold));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .project-card:hover {
+    border-color: rgba(13,115,119,0.4);
+    background: rgba(13,115,119,0.08);
+    transform: translateY(-3px);
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-badge {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    margin-bottom: 0.9rem;
+  }
+  .badge-live { background: rgba(26,122,74,0.25); color: #4ade80; }
+  .badge-capstone { background: rgba(232,168,56,0.2); color: var(--gold2); }
+  .badge-study { background: rgba(13,115,119,0.25); color: var(--teal2); }
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+  .project-org {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .project-desc {
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+    margin-bottom: 1.2rem;
+  }
+  .project-results {
+    display: flex; flex-direction: column; gap: 0.5rem;
+    margin-bottom: 1.2rem;
+  }
+  .result-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .result-icon { color: var(--gold); font-size: 0.75rem; }
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+  }
+  .tag {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.07);
+    color: rgba(255,255,255,0.45);
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CAPSTONE SPOTLIGHT ── */
+  .capstone-spotlight {
+    background: linear-gradient(135deg, var(--navy2) 0%, rgba(13,115,119,0.2) 100%);
+    border: 1px solid rgba(13,115,119,0.3);
+    border-radius: 10px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .capstone-spotlight::after {
+    content: 'CAPSTONE';
+    position: absolute;
+    right: -1rem; top: 1.5rem;
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: 0.1em;
+    pointer-events: none;
+  }
+  .spotlight-grid {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 2.5rem; align-items: start;
+  }
+  .spotlight-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .spotlight-org {
+    font-size: 0.78rem;
+    color: var(--teal2);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+  }
+  .spotlight-desc {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.75;
+  }
+  .spotlight-metrics {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  .metric-box {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 6px;
+    padding: 1rem;
+    text-align: center;
+  }
+  .metric-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.6rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .metric-label {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.4;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--white); }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+  .cert-card {
+    border: 1px solid var(--lgray);
+    border-radius: 6px;
+    padding: 1.2rem 1.4rem;
+    background: var(--cream);
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+  }
+  .cert-card:hover {
+    border-color: var(--teal);
+    transform: translateY(-2px);
+  }
+  .cert-issuer {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.5rem;
+  }
+  .cert-name {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+  }
+  .cert-year {
+    font-size: 0.75rem;
+    color: var(--gray);
+  }
+
+  /* ── EDUCATION ── */
+  #education { background: var(--cream); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .edu-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.8rem;
+    border: 1px solid var(--lgray);
+    border-left: 4px solid var(--teal);
+    transition: box-shadow 0.2s;
+  }
+  .edu-card:hover { box-shadow: 0 4px 20px rgba(13,115,119,0.1); }
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+  .edu-school {
+    font-size: 0.85rem;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .edu-meta {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    font-size: 0.78rem;
+    color: var(--gray);
+  }
+  .edu-score {
+    background: rgba(13,115,119,0.1);
+    color: var(--teal);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    text-align: center;
+  }
+  #contact .section-title { color: var(--white); }
+  #contact .section-sub { color: rgba(255,255,255,0.5); margin: 0 auto 2.5rem; }
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 12px 22px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .contact-link.primary {
+    background: var(--teal);
+    color: white;
+  }
+  .contact-link.primary:hover { background: var(--teal2); transform: translateY(-1px); }
+  .contact-link.secondary {
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+  }
+  .contact-link.secondary:hover { border-color: var(--gold); color: var(--gold); }
+  .footer-note {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .hero-grid, .about-grid, .spotlight-grid, .edu-grid { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr 1fr; }
+    .nav-links { display: none; }
+    .spotlight-metrics { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 4%; }
+    section { padding: 60px 4%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Swaraj Deshmukh</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-tag">Operations &amp; SCM Consultant</div>
+      <h1>Swaraj M.<br><em>Deshmukh</em></h1>
+      <p class="hero-sub">
+        Engineering + Management professional delivering live process optimisation, procurement planning, and SCM consulting in defence shipbuilding — backed by KPMG advisory experience.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary">View Live Projects</a>
+        <a href="#contact" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">150+</div>
+          <div class="stat-label">BOM items mapped &amp; procured for live L&amp;T defence contract</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">33%</div>
+          <div class="stat-label">Reduction in boat production cycle time through process optimisation</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">70K+</div>
+          <div class="stat-label">Defence value chain data points automated at KPMG using Python</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">₹1.57Cr</div>
+          <div class="stat-label">Material spend planned &amp; tracked for 4-boat production batch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-left reveal">
+        <div class="about-photo-box"></div>
+        <ul class="about-contact-list">
+          <li><span class="contact-icon">📧</span> swaraj.deshmukh24-01@nadp.ac.in</li>
+          <li><span class="contact-icon">📞</span> +91 9860727924</li>
+          <li><span class="contact-icon">📍</span> Goa / Nagpur, India</li>
+          <li><span class="contact-icon">🎓</span> PGDM — NADP Nagpur (2024–26)</li>
+          <li><span class="contact-icon">🔗</span> <a href="https://linkedin.com" style="color:var(--teal);text-decoration:none;">LinkedIn Profile</a></li>
+        </ul>
+      </div>
+      <div class="about-right reveal">
+        <div class="section-tag">About Me</div>
+        <h2 class="section-title">Operations Engineer turned<br>SCM Consultant</h2>
+        <p>I'm a PGDM (Business Management) candidate at <strong>National Academy of Defence Production, Nagpur</strong> with a BE in Mechanical Engineering. I work at the intersection of operations, supply chain, and data — turning shop-floor complexity into structured, measurable improvements.</p>
+        <p>Currently completing a <strong>live consulting engagement at Chowgule Fiberglass Ships (P) Ltd, Goa</strong> — delivering procurement planning, BOM management, time &amp; motion studies, and production optimisation for a 4-boat RIB production programme under an L&amp;T defence contract.</p>
+        <p>Previously at <strong>KPMG India (Management Advisory, Aerospace &amp; Defence)</strong> — automating defence value chain analysis and conducting strategic market entry assessments for public-listed defence firms.</p>
+        <div class="skills-grid">
+          <div class="skill-pill">Operations Management</div>
+          <div class="skill-pill">Supply Chain (SCM)</div>
+          <div class="skill-pill">Process Optimisation</div>
+          <div class="skill-pill">Time &amp; Motion Study</div>
+          <div class="skill-pill">BOM &amp; Procurement Planning</div>
+          <div class="skill-pill">MS Power BI / Tableau</div>
+          <div class="skill-pill">Python (Data Analysis)</div>
+          <div class="skill-pill">MS Excel (Advanced)</div>
+          <div class="skill-pill">Lean / Waste Reduction</div>
+          <div class="skill-pill">Defence SCM (DAP 2020)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <div class="section-tag reveal">Work Experience</div>
+    <h2 class="section-title reveal">Where I've Delivered</h2>
+    <p class="section-sub reveal">Hands-on consulting and advisory experience across defence shipbuilding, aerospace &amp; defence advisory, and equity research.</p>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-company">Chowgule Fiberglass Ships (P) Ltd</span>
+          <span class="timeline-period">Jan 2026 – Present</span>
+        </div>
+        <div class="timeline-role">Operations &amp; SCM Consultant (Internship cum Capstone) — Goa</div>
+        <ul class="timeline-bullets">
+          <li>Led end-to-end <strong>procurement planning for a 4-boat RIB production programme</strong> (L&amp;T contract, ₹1.57 Cr material spend) — mapping 150+ BOM items with stage-wise lead times from 2 to 120 days.</li>
+          <li>Conducted <strong>time &amp; motion studies</strong> across 5 production stages, identifying idle time, bottlenecks, and non-value-added activities on the shop floor.</li>
+          <li>Reduced production cycle time from <strong>45 days to 30 days (33% improvement)</strong> through process re-sequencing and parallel workstream implementation.</li>
+          <li>Built an <strong>integrated BOM-Manhour-Gantt dashboard</strong> in Excel linking material arrival dates, production milestones, and QC inspection checkpoints across 59 working days.</li>
+          <li>Identified and flagged <strong>6 critical long-lead procurement items</strong> (engine LT: 120 days, Hypalon fabric LT: 35 days) — preventing potential production stoppages through early PO release calendar.</li>
+          <li>Reduced <strong>idle time and material planning uncertainty</strong> through lead time stratification into 5 tiers with differentiated ordering protocols.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-company">KPMG India — Management Advisory</span>
+          <span class="timeline-period">Jun 2025 – Jul 2025</span>
+        </div>
+        <div class="timeline-role">Academic Trainee — Aerospace &amp; Defence Practice</div>
+        <ul class="timeline-bullets">
+          <li>Automated analysis of <strong>70,000+ defence value chain data points using Python</strong>, improving insight accuracy by 40%. Project launched by IDS HQ India as an AI-powered Competency Mapping Database.</li>
+          <li>Benchmarked Indian public shipyards on <strong>technological, capacity, and financial parameters</strong> for a strategic advisory engagement.</li>
+          <li>Conducted <strong>strategic market entry analysis</strong> for a publicly listed defence company — evaluated feasibility, expansion potential, and development drivers in the shipbuilding sector.</li>
+          <li>Drafted <strong>EoI and technical qualification documents</strong> per DAP/DPP 2020, achieving 100% compliance.</li>
+          <li>Trained 6 employees on <strong>Defence Acquisition Procedure (DAP 2020)</strong> and supported mentoring.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-company">Finsckool Equity Research</span>
+          <span class="timeline-period">Jul 2025 – Aug 2025</span>
+        </div>
+        <div class="timeline-role">Equity Research Intern (Remote)</div>
+        <ul class="timeline-bullets">
+          <li>Conducted <strong>fundamental and technical equity analysis</strong> using ratio analysis, valuation models, and chart patterns.</li>
+          <li>Delivered actionable market insights and investment summaries for active portfolio decisions.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-meta">
+          <span class="timeline-company">TATA Motors Ltd.</span>
+          <span class="timeline-period">Jun 2019 – Jul 2019</span>
+        </div>
+        <div class="timeline-role">Trainee Engineer — Amravati Plant</div>
+        <ul class="timeline-bullets">
+          <li>Analysed <strong>manufacturing defects in automotive components</strong> and supported quality control process improvements on the assembly line.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-tag reveal">Live Project Work</div>
+    <h2 class="section-title reveal">Consulting Projects</h2>
+    <p class="section-sub reveal">Every project below was executed on a real production floor with real data — not academic simulations.</p>
+
+    <!-- Capstone Spotlight -->
+    <div class="capstone-spotlight reveal">
+      <div class="spotlight-grid">
+        <div>
+          <div class="project-badge badge-capstone">★ Capstone Project — Approved</div>
+          <div class="spotlight-title">Procurement Lead Time Variability &amp; Material Planning — 7.2M RIB Boat</div>
+          <div class="spotlight-org">Chowgule Fiberglass Ships (P) Ltd · L&amp;T Defence Contract · 4 Boats · Delivery: 31 May 2026</div>
+          <p class="spotlight-desc">
+            Investigated how variability in procurement lead times (2–120 days), demand concentration in Stage 1 (~52% of total cost), and supplier responsiveness gaps create material planning uncertainty. Built a complete BOM-Manhour-Procurement planning framework covering ₹1.57 Crore of material across 5 production stages and 59 working days.
+          </p>
+        </div>
+        <div class="spotlight-metrics">
+          <div class="metric-box">
+            <div class="metric-num">150+</div>
+            <div class="metric-label">BOM items classified</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">5</div>
+            <div class="metric-label">LT tiers mapped</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">₹1.57Cr</div>
+            <div class="metric-label">Material spend planned</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-num">8</div>
+            <div class="metric-label">QC hold points documented</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="projects-grid">
+
+      <div class="project-card reveal">
+        <div class="project-badge badge-live">Live Project</div>
+        <div class="project-title">Time &amp; Motion Study — RIB Boat Production</div>
+        <div class="project-org">Chowgule Fiberglass Ships · 2026</div>
+        <p class="project-desc">Conducted systematic time &amp; motion analysis across all 5 production stages of the 7.2M RIB boat. Mapped each activity's standard time, worker allocation, and actual vs planned manhours to identify waste and idle time.</p>
+        <div class="project-results">
+          <div class="result-item"><span class="result-icon">▲</span> Identified idle time hotspots across stages 2 &amp; 3</div>
+          <div class="result-item"><span class="result-icon">▲</span> Quantified manhour waste per production activity</div>
+          <div class="result-item"><span class="result-icon">▲</span> Recommended workforce re-allocation to parallel streams</div>
+        </div>
+        <div class="project-tags"><span class="tag">Time Study</span><span class="tag">Motion Analysis</span><span class="tag">Excel</span><span class="tag">Lean</span></div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge badge-live">Live Project</div>
+        <div class="project-title">Production Cycle Reduction: 45 Days → 30 Days</div>
+        <div class="project-org">Chowgule Fiberglass Ships · 2026</div>
+        <p class="project-desc">Analysed the full end-to-end boat production flow to identify bottlenecks, sequential dependencies that could be parallelised, and non-value-added waiting time — resulting in a 33% reduction in production cycle time.</p>
+        <div class="project-results">
+          <div class="result-item"><span class="result-icon">▲</span> 33% cycle time reduction (45 → 30 days)</div>
+          <div class="result-item"><span class="result-icon">▲</span> Introduced 3 parallel production workstreams in Stage 1</div>
+          <div class="result-item"><span class="result-icon">▲</span> Improved throughput time for 4-boat batch</div>
+        </div>
+        <div class="project-tags"><span class="tag">Process Optimisation</span><span class="tag">Throughput</span><span class="tag">Gantt</span><span class="tag">Lean</span></div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge badge-live">Live Project</div>
+        <div class="project-title">Downtime Reduction &amp; Idle Time Analysis</div>
+        <div class="project-org">Chowgule Fiberglass Ships · 2026</div>
+        <p class="project-desc">Mapped unplanned downtime and idle time across production stages using data from the manhour tracker. Identified root causes — material unavailability, worker waiting, and rework cycles — and developed targeted interventions.</p>
+        <div class="project-results">
+          <div class="result-item"><span class="result-icon">▲</span> Root-caused top 3 sources of production idle time</div>
+          <div class="result-item"><span class="result-icon">▲</span> Linked idle time directly to procurement gaps</div>
+          <div class="result-item"><span class="result-icon">▲</span> Recommended material buffer stock protocol</div>
+        </div>
+        <div class="project-tags"><span class="tag">Downtime Analysis</span><span class="tag">Root Cause</span><span class="tag">OEE</span><span class="tag">Excel</span></div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge badge-live">Live Project</div>
+        <div class="project-title">Lead Time &amp; Supplier Risk Mapping</div>
+        <div class="project-org">Chowgule Fiberglass Ships · 2026</div>
+        <p class="project-desc">Classified all 150+ BOM items by lead time (2–120 days) into 5 procurement tiers. Built a procurement calendar linking supplier PO release dates to production stage start dates — eliminating late ordering risk.</p>
+        <div class="project-results">
+          <div class="result-item"><span class="result-icon">▲</span> 6 critical items flagged (LT 30–120 days)</div>
+          <div class="result-item"><span class="result-icon">▲</span> PO calendar created for all 150+ materials</div>
+          <div class="result-item"><span class="result-icon">▲</span> Zero procurement-caused stoppages in plan</div>
+        </div>
+        <div class="project-tags"><span class="tag">SCM</span><span class="tag">Lead Time</span><span class="tag">Procurement</span><span class="tag">Risk</span></div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge badge-study">KPMG · Advisory</div>
+        <div class="project-title">Defence Value Chain Automation — IDS HQ India</div>
+        <div class="project-org">KPMG India Management Advisory · Jun–Jul 2025</div>
+        <p class="project-desc">Automated analysis of 70,000+ defence value chain data points using Python. Project launched by IDS HQ India as an AI-powered Competency Mapping Database to map Indian defence products and capabilities.</p>
+        <div class="project-results">
+          <div class="result-item"><span class="result-icon">▲</span> 40% improvement in insight accuracy</div>
+          <div class="result-item"><span class="result-icon">▲</span> Platform launched by IDS HQ India</div>
+          <div class="result-item"><span class="result-icon">▲</span> 70,000+ data points processed</div>
+        </div>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">Defence</span><span class="tag">Data Analytics</span><span class="tag">KPMG</span></div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-badge badge-study">KPMG · Advisory</div>
+        <div class="project-title">Shipyard Benchmarking &amp; Market Entry Analysis</div>
+        <div class="project-org">KPMG India Management Advisory · Jun–Jul 2025</div>
+        <p class="project-desc">Benchmarked Indian public shipyards on technological, capacity, and financial parameters. Conducted strategic market entry feasibility analysis for a publicly listed company evaluating expansion in defence shipbuilding.</p>
+        <div class="project-results">
+          <div class="result-item"><span class="result-icon">▲</span> Multi-parameter shipyard benchmarking framework</div>
+          <div class="result-item"><span class="result-icon">▲</span> Market entry recommendation delivered</div>
+          <div class="result-item"><span class="result-icon">▲</span> DAP/DPP 2020 compliant documentation</div>
+        </div>
+        <div class="project-tags"><span class="tag">Strategy</span><span class="tag">Benchmarking</span><span class="tag">Defence</span><span class="tag">Market Entry</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-tag reveal">Credentials</div>
+    <h2 class="section-title reveal">Certifications</h2>
+    <p class="section-sub reveal">Continuous learning across management, analytics, consulting, and engineering.</p>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="cert-issuer">IIM Indore</div>
+        <div class="cert-name">Summer School Program — Management Development</div>
+        <div class="cert-year">2025</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Board Infinity</div>
+        <div class="cert-name">Microsoft Power BI — Data Modelling &amp; Transformation</div>
+        <div class="cert-year">2025</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Infosys Springboard</div>
+        <div class="cert-name">Basic Statistics &amp; Data Mining | Microsoft Excel</div>
+        <div class="cert-year">2025</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Infosys Springboard × Udemy</div>
+        <div class="cert-name">Introduction to Consulting — Dr. Firth</div>
+        <div class="cert-year">2026</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Infosys Springboard</div>
+        <div class="cert-name">Budgeting for Consulting</div>
+        <div class="cert-year">2026</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Udemy</div>
+        <div class="cert-name">Project Management — Beginner to PROject Manager</div>
+        <div class="cert-year">2019</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Indo German Tool Room, Aurangabad</div>
+        <div class="cert-name">Tool Engineering &amp; CAD/CAM (CATIA)</div>
+        <div class="cert-year">2019</div>
+      </div>
+      <div class="cert-card reveal">
+        <div class="cert-issuer">Great Learning / Alison</div>
+        <div class="cert-name">Operations Management — Fundamentals &amp; Diploma</div>
+        <div class="cert-year">2024–25</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <div class="section-tag reveal">Academic Background</div>
+    <h2 class="section-title reveal">Education</h2>
+    <div class="edu-grid">
+      <div class="edu-card reveal">
+        <div class="edu-degree">Post Graduate Diploma in Management</div>
+        <div class="edu-school">National Academy of Defence Production (NADP), Nagpur</div>
+        <div class="edu-meta">
+          <span>Business Management</span>
+          <span class="edu-score">GPA: 7.78</span>
+          <span>2024 – 2026</span>
+        </div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-degree">Bachelor of Engineering — Mechanical</div>
+        <div class="edu-school">Prof. Ram Meghe Institute of Technology &amp; Research (SGBAU)</div>
+        <div class="edu-meta">
+          <span>Mechanical Engineering</span>
+          <span class="edu-score">81%</span>
+          <span>2016 – 2020</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner" style="text-align:center;">
+    <div class="section-tag reveal" style="justify-content:center;display:block;">Let's Connect</div>
+    <h2 class="section-title reveal">Open to Consulting &amp;<br>Operations Roles</h2>
+    <p class="section-sub reveal">I'm actively targeting operations consulting, SCM, and process optimisation roles. If you're working on something interesting in defence, manufacturing, or supply chain — let's talk.</p>
+    <div class="contact-links reveal">
+      <a href="mailto:swaraj.deshmukh24-01@nadp.ac.in" class="contact-link primary">📧 Email Me</a>
+      <a href="https://linkedin.com" class="contact-link secondary">🔗 LinkedIn</a>
+      <a href="tel:+919860727924" class="contact-link secondary">📞 +91 98607 27924</a>
+    </div>
+    <div class="footer-note reveal">
+      Built by Swaraj Deshmukh · Operations &amp; SCM Consultant · NADP Nagpur · 2026
+    </div>
+  </div>
+</section>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
